@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Check if heading already exists
-        $headingExistsQuery = "SELECT * FROM news_tbl WHERE heading = '$heading'";
+        $headingExistsQuery = "SELECT * FROM news WHERE heading = '$heading'";
         $headingExistsResult = mysqli_query($conn, $headingExistsQuery);
 
         if (mysqli_num_rows($headingExistsResult) > 0) {
@@ -103,10 +103,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Insert tags into the database if they don't exist already
                 foreach ($escapedTags as $value) {
-                    $selectTags = "SELECT * FROM `tags_tbl` WHERE tag_name = '$value'";
+                    $selectTags = "SELECT * FROM `tags` WHERE tag_name = '$value'";
                     $query_Tags = mysqli_query($conn, $selectTags);
                     if (mysqli_num_rows($query_Tags) == 0) {
-                        $sql2 = "INSERT INTO tags_tbl (`tag_name`) VALUES ('$value')";
+                        $sql2 = "INSERT INTO tags (`tag_name`) VALUES ('$value')";
                         $query_r2 = mysqli_query($conn, $sql2);
                         if (!$query_r2) {
                             echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
 
                 // Insert news post into the database
-                $sql1 = "INSERT INTO news_tbl (heading, slug, category_id, content, image, tags, created_by) VALUES ('$heading', '$slug', '$category', '$editorData', '$originalImagePath', '$tags1', '$createdBy')";
+                $sql1 = "INSERT INTO news (heading, slug, category_id, content, image, tags, created_by) VALUES ('$heading', '$slug', '$category', '$editorData', '$originalImagePath', '$tags1', '$createdBy')";
                 $query_r1 = mysqli_query($conn, $sql1);
 
                 if ($query_r1) {

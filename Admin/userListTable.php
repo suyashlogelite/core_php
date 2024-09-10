@@ -7,7 +7,7 @@ include "backend/AdminSessionCheck.php";
 
 <?php
 include_once "backend/dbconfig.php";
-$sql = "SELECT * FROM `user_tbl`";
+$sql = "SELECT * FROM `users`";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     $num = mysqli_num_rows($result);
@@ -155,7 +155,7 @@ $(document).ready(function() {
     var table = $('#userListTable').dataTable({
         "bProcessing": true,
         "autoWidth": false,
-        "sAjaxSource": "data.php?table=user_tbl",
+        "sAjaxSource": "data.php?table=users",
         "bPaginate": true,
         "sPaginationType": "full_numbers",
         "iDisplayLength": 10,

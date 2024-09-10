@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "news_portal_db";
+$username = "phpmyadmin";
+$password = "root123";
+$dbname = "news_portal";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

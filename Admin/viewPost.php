@@ -29,7 +29,7 @@ include "backend/fetchPost.php"
 
                 $id = $_GET['id'];
 
-                $select_post ="SELECT `id`, `heading`,`category_id`,`content`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news_tbl` where id=$id";
+                $select_post ="SELECT `id`, `heading`,`category_id`,`content`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news` where id=$id";
 
                 $query_post = mysqli_query($conn, $select_post);
 

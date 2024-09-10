@@ -73,7 +73,7 @@ $(document).ready(function() {
     var table = $('#newsBlogTable').dataTable({
         "bProcessing": true,
         "autoWidth":false,
-        "sAjaxSource": "data.php?table=news_tbl",
+        "sAjaxSource": "data.php?table=news",
         "bPaginate": true,
         "sPaginationType": "full_numbers",
         "iDisplayLength": 10,

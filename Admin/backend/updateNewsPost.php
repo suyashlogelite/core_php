@@ -70,10 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tag_new = explode(',', $tags1);
 
             foreach ($tag_new as $value) {
-                $selectTags = "SELECT * FROM `tags_tbl` WHERE tag_name = '$value'";
+                $selectTags = "SELECT * FROM `tags` WHERE tag_name = '$value'";
                 $query_Tags = mysqli_query($conn, $selectTags);
                 if ($query_Tags) {
-                    $sql2 = "UPDATE tags_tbl SET `tag_name` = '$value' WHERE tag_name = '$value'";
+                    $sql2 = "UPDATE tags SET `tag_name` = '$value' WHERE tag_name = '$value'";
                     $query_r2 = mysqli_query($conn, $sql2);
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Get the old image name from the database
-            $oldImageQuery = "SELECT image FROM news_tbl WHERE id = '$editId'";
+            $oldImageQuery = "SELECT image FROM news WHERE id = '$editId'";
             $oldImageResult = mysqli_query($conn, $oldImageQuery);
             if ($oldImageResult) {
                 $oldImageRow = mysqli_fetch_assoc($oldImageResult);
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
 
                 // Update the database with the new image file name
-                $sql1 = "UPDATE news_tbl SET heading = '$heading', slug = '$slug', category_id = '$category', content = '$editorData', image ='$uploadPath', tags = '$tags1', created_by = '$createdBy' WHERE id = $editId;";
+                $sql1 = "UPDATE news SET heading = '$heading', slug = '$slug', category_id = '$category', content = '$editorData', image ='$uploadPath', tags = '$tags1', created_by = '$createdBy' WHERE id = $editId;";
 
                 $query_r1 = mysqli_query($conn, $sql1);
 
@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // If no new image is uploaded, keep the previous image
-        $sql1 = "UPDATE news_tbl SET heading = '$heading', slug = '$slug', category_id = '$category', content = '$editorData', tags = '$tags1', created_by = '$createdBy' WHERE id = $editId;";
+        $sql1 = "UPDATE news SET heading = '$heading', slug = '$slug', category_id = '$category', content = '$editorData', tags = '$tags1', created_by = '$createdBy' WHERE id = $editId;";
 
         $query_r1 = mysqli_query($conn, $sql1);
 

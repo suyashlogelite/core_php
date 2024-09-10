@@ -77,7 +77,7 @@ include "backend/AdminSessionCheck.php";
                                         <select id="multipleSelect" style="width:100%" name="tags[]" class="select2 form-control"
                                             multiple="multiple" data-placeholder="Select a State">
                                             <?php
-                                            $query_tags = "SELECT * FROM `tags_tbl`";
+                                            $query_tags = "SELECT * FROM `tags`";
                                             $result_tags = mysqli_query($conn, $query_tags);
                                             if ($result_tags) {
                                                 if (mysqli_num_rows($result_tags) > 0) {

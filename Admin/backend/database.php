@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $pass = mysqli_real_escape_string($conn, $pass);
 
     // Construct the SQL query
-    $sql = "SELECT * FROM user_tbl WHERE email='$uemail'";
+    $sql = "SELECT * FROM users WHERE email='$uemail'";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {

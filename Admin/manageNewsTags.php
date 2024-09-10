@@ -116,7 +116,7 @@ $(document).ready(function() {
     var table = $('#tagsTable').dataTable({
         "bProcessing": true,
         "autoWidth":false,
-        "sAjaxSource": "data.php?table=tags_tbl",
+        "sAjaxSource": "data.php?table=tags",
         "bPaginate": true,
         "sPaginationType": "full_numbers",
         "iDisplayLength": 10,

@@ -14,13 +14,13 @@ $responses = array();
             $country = $_POST['country'];
 
             // Check if email already exists
-            $selectUser = "SELECT * FROM `user_tbl` WHERE `email` = '$email'";
+            $selectUser = "SELECT * FROM `users` WHERE `email` = '$email'";
             $query_user_run = mysqli_query($conn, $selectUser);
             if ($query_user_run) {
                 if (mysqli_num_rows($query_user_run) > 0) {
                     $responses['error'] = "Email id already exists!";
                 } else {
-                    $queryInsert = "INSERT INTO `user_tbl` (`name`, `email`, `phone`, `gender`, `role`, `country`) VALUES ('$name', '$email', '$phone', '$gender', '$role', '$country')";
+                    $queryInsert = "INSERT INTO `users` (`name`, `email`, `phone`, `gender`, `role`, `country`) VALUES ('$name', '$email', '$phone', '$gender', '$role', '$country')";
                     $insert_run = mysqli_query($conn, $queryInsert);
                     if ($insert_run) {
                         $responses['success'] = "User Record Inserted Successfully";
@@ -39,7 +39,7 @@ $responses = array();
 // Edit User
 if (isset($_GET['userid'])) {
     $user_id = $_GET['userid'];
-    $query = "SELECT * FROM `user_tbl` WHERE id = $user_id";
+    $query = "SELECT * FROM `users` WHERE id = $user_id";
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
         if (mysqli_num_rows($query_run) > 0) {
@@ -62,7 +62,7 @@ else if (isset($_POST['user_id']) && $_POST['user_id'] !== "") {
     $gender = $_POST['gender'];
     $role = $_POST['role'];
     $country = $_POST['country'];
-    $query1 = "UPDATE `user_tbl` SET name = '$name', email = '$email', phone = '$phone', gender = '$gender', role = '$role', country = '$country' WHERE id = $id";
+    $query1 = "UPDATE `users` SET name = '$name', email = '$email', phone = '$phone', gender = '$gender', role = '$role', country = '$country' WHERE id = $id";
     $query_run1 = mysqli_query($conn, $query1);
     if ($query_run1) {
         $responses['success'] = "User Updated Successfully";
@@ -73,7 +73,7 @@ else if (isset($_POST['user_id']) && $_POST['user_id'] !== "") {
 // Delete User
 else if (isset($_POST['deleteUser']) && $_POST['deleteUser'] !== "") {
     $id = $_POST['deleteUser']; // Change to POST method
-    $query = "DELETE FROM `user_tbl` WHERE id = $id";
+    $query = "DELETE FROM `users` WHERE id = $id";
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
         $responses['success'] = "Record Deleted Successfully";

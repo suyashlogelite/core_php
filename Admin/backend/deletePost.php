@@ -4,7 +4,7 @@ if (isset($_GET['delete_id'])) {
 
     $id = $_GET['delete_id'];
 
-    $oldImageQuery = "SELECT image FROM news_tbl WHERE id = $id";
+    $oldImageQuery = "SELECT image FROM news WHERE id = $id";
     $oldImageResult = mysqli_query($conn, $oldImageQuery);
     $uploadDir = "uploads/";
     if ($oldImageResult) {
@@ -24,7 +24,7 @@ if (isset($_GET['delete_id'])) {
         if (!empty($ImagePath1) && file_exists($ImagePath1)) {
             unlink($ImagePath1);
         }
-        $query = "DELETE FROM `news_tbl` WHERE id = $id";
+        $query = "DELETE FROM `news` WHERE id = $id";
 
         $query_run = mysqli_query($conn, $query);
 

@@ -8,7 +8,7 @@ include "backend/dbconfig.php";
 if (isset($_GET['editid'])) {
 
     $editid = $_GET['editid'];
-    $select_news = "SELECT * FROM `news_tbl` WHERE id = $editid";
+    $select_news = "SELECT * FROM `news` WHERE id = $editid";
     $query_news = mysqli_query($conn, $select_news);
     if ($query_news) {
         if (mysqli_num_rows($query_news) > 0) {
@@ -70,7 +70,7 @@ if (isset($_GET['editid'])) {
                                             $query = "SELECT * FROM `categories` WHERE parent_category = '0'";
                                             $result = mysqli_query($conn, $query);
 
-                                            $sql = "SELECT * FROM `news_tbl`";
+                                            $sql = "SELECT * FROM `news`";
                                             $result2 = mysqli_query($conn, $sql);
                                             $fetch = mysqli_fetch_assoc($result2);
                                             $category_id = $fetch['category_id'];
@@ -115,7 +115,7 @@ if (isset($_GET['editid'])) {
                                         <select id="multipleSelect" name="tags[]" class="select2 form-control"
                                             multiple="multiple" data-placeholder="Select a State">
                                             <?php
-                                            $query_tags = "SELECT * FROM `tags_tbl`";
+                                            $query_tags = "SELECT * FROM `tags`";
                                             $result_tags = mysqli_query($conn, $query_tags);
                                             if ($result_tags) {
                                                 if (mysqli_num_rows($result_tags) > 0) {

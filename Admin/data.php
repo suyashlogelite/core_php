@@ -30,8 +30,8 @@ if ($_GET['table'] === 'categories') {
         "aaData" => $data
     );
     echo json_encode($results);
-} elseif ($_GET['table'] === 'user_tbl') {
-    $sql = "SELECT `id`, `name`, `email`, `phone`, `gender`, `role`, `status`, `country`,DATE_FORMAT(created, '%d-%m-%Y') AS created, DATE_FORMAT(login_time, '%d-%m-%Y %h:%i:%s') AS login_time FROM `user_tbl` where role !='admin'";
+} elseif ($_GET['table'] === 'users') {
+    $sql = "SELECT `id`, `name`, `email`, `phone`, `gender`, `role`, `status`, `country`,DATE_FORMAT(created, '%d-%m-%Y') AS created, DATE_FORMAT(login_time, '%d-%m-%Y %h:%i:%s') AS login_time FROM `users` where role !='admin'";
     $resultset = mysqli_query($conn, $sql) or
         die("database error:" . mysqli_error($conn));
     $data = array();
@@ -45,15 +45,15 @@ if ($_GET['table'] === 'categories') {
         "aaData" => $data
     );
     echo json_encode($results);
-} elseif ($_GET['table'] === 'news_tbl') {
+} elseif ($_GET['table'] === 'news') {
     
     session_start();
     $emailsess=$_SESSION['email'];
     $role=$_SESSION['role'];
     if($role=='user'){
-        $sql = "SELECT `id`, `heading`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news_tbl` where created_by='$emailsess' ORDER BY id DESC";
+        $sql = "SELECT `id`, `heading`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news` where created_by='$emailsess' ORDER BY id DESC";
     }else{
-        $sql = "SELECT `id`, `heading`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news_tbl`";
+        $sql = "SELECT `id`, `heading`, `image`, `created_by`, `views`, `status`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at FROM `news`";
     }
   
 
@@ -70,9 +70,9 @@ if ($_GET['table'] === 'categories') {
         "aaData" => $data
     );
     echo json_encode($results);
-}  elseif ($_GET['table'] === 'tags_tbl') {
+}  elseif ($_GET['table'] === 'tags') {
     
-    $sql = "SELECT `id`, `tag_name`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at, `status` FROM `tags_tbl`";
+    $sql = "SELECT `id`, `tag_name`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created_at, DATE_FORMAT(updated_at, '%d-%m-%Y %h:%i:%s') AS updated_at, `status` FROM `tags`";
 
     $resultset = mysqli_query($conn, $sql) or
         die("database error:" . mysqli_error($conn));
