@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "news_portal_db";
+$username = "phpmyadmin";
+$password = "root123";
+$dbname = "news_portal";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -31,7 +31,7 @@ if ($_GET['table'] === 'categories') {
     );
     echo json_encode($results);
 } elseif ($_GET['table'] === 'users') {
-    $sql = "SELECT `id`, `name`, `email`, `phone`, `gender`, `role`, `status`, `country`,DATE_FORMAT(created, '%d-%m-%Y') AS created, DATE_FORMAT(login_time, '%d-%m-%Y %h:%i:%s') AS login_time FROM `users` where role !='admin'";
+    $sql = "SELECT `id`, `name`, `email`, `phone`, `gender`, `role`, `status`, `country`,DATE_FORMAT(created_at, '%d-%m-%Y') AS created, DATE_FORMAT(login_time, '%d-%m-%Y %h:%i:%s') AS login_time FROM `users` where role !='admin'";
     $resultset = mysqli_query($conn, $sql) or
         die("database error:" . mysqli_error($conn));
     $data = array();
