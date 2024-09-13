@@ -6,7 +6,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../Admin/index.php" class="btn btn-dark shadow">Home</a>
+      <a href="../Admin/index.html" class="btn btn-dark shadow">Home</a>
     </li>
   </ul>
 
