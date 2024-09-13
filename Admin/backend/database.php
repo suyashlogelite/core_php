@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['role'] = $row['role'];
-                header('Location: ../index.html');
+                header('Location: ../index.php');
                 exit();
             } else {
                 $_SESSION['error_msg'] = 'Invalid email or password';

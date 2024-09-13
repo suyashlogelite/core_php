@@ -8,7 +8,7 @@
 //     success: function(data){
 //         console.log(data);
 //     if(data === 'admin') {
-//         window.location = "../index.html";
+//         window.location = "../index.php";
 //     }
 //     else {
 //         console.log(data);

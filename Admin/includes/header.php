@@ -66,9 +66,9 @@ if (!isset ($_SESSION['email']) && $_SESSION['email'] == "") {
 } 
        $path = pathinfo($_SERVER['PHP_SELF'],PATHINFO_BASENAME);
             if($_SESSION['role'] != "admin"){
-            $validateUrl=['addNewsBlog.php','index.html','manageNewsBlog.php','editNewsBlogs.php','viewPost.php'];
+            $validateUrl=['addNewsBlog.php','index.php','manageNewsBlog.php','editNewsBlogs.php','viewPost.php'];
               if (!in_array($path, $validateUrl)) {
-                        header("location:index.html");
+                        header("location:index.php");
               }
             }
       ?>
